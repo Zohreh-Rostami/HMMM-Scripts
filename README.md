@@ -1,104 +1,106 @@
 # Highly Mobile Membrane-Mimetic (HMMM) Conversion
 
-This repository contains VMD/Tcl workflows for converting membrane systems
-between full-length (FL) lipid representations and Highly Mobile
-Membrane-Mimetic (HMMM) representations.
+VMD/Tcl workflows for converting membrane systems between full-length (FL)
+lipid representations and Highly Mobile Membrane-Mimetic (HMMM)
+representations.
 
-The repository includes:
+The repository is organized around two things:
 
-- `fl-to-hmmm/`: converts a full-length membrane to HMMM.
-- `hmmm_to_fl/`: converts an HMMM membrane back to full-length.
-- `membrane_conversion_example/`: a runnable test system with sample PSF/PDB
-  inputs, helper scripts, and validation checks.
+- `workflows/`: the conversion scripts and topology files.
+- `examples/`: runnable sample systems and validation helpers.
+
+## Start Here
+
+Run the included membrane conversion example from the repository root:
+
+```bash
+bash examples/membrane_conversion/scripts/run_all.sh
+```
+
+This runs:
+
+1. Full-length to HMMM conversion.
+2. HMMM to full-length conversion.
+3. Validation of the generated PSF/PDB files.
+
+Expected validation summary:
+
+```text
+fl_to_hmmm: validation passed
+  PSF atoms: 24035
+  PDB atoms: 24035
+hmmm_to_fl: validation passed
+  PSF atoms: 27044
+  PDB atoms: 27044
+```
 
 ## Requirements
 
 - VMD with `psfgen`.
-- Python 3 for validating the runnable example.
+- Python 3 for validation.
 - For HMMM-to-FL: NAMD available as `namd2`.
 - For HMMM-to-FL: the VMD ring-piercing plugin used by
   `ring_piercing_solver.tcl`.
 
-If VMD is not available as `vmd`, set `VMD_BIN` when running the example:
+If VMD is installed under a different command/path, set `VMD_BIN`:
 
 ```bash
-VMD_BIN=/path/to/vmd bash membrane_conversion_example/scripts/run_fl_to_hmmm.sh
+VMD_BIN=/path/to/vmd bash examples/membrane_conversion/scripts/run_fl_to_hmmm.sh
 ```
 
-## Quick Start
-
-Run the included example from the repository root:
-
-```bash
-bash membrane_conversion_example/scripts/run_fl_to_hmmm.sh
-bash membrane_conversion_example/scripts/run_hmmm_to_fl.sh
-```
-
-Or run both:
-
-```bash
-bash membrane_conversion_example/scripts/run_all.sh
-```
-
-The example scripts create temporary output under:
-
-```text
-membrane_conversion_example/work/
-```
-
-This directory is ignored by Git.
-
-## Repository Contents
+## Repository Layout
 
 ```text
 .
-|-- fl-to-hmmm/
-|   |-- fl-to-hmmm-script.tcl
-|   |-- toppar/
-|   `-- README.md
-|-- hmmm_to_fl/
-|   |-- hmmm-to-fl-script.tcl
-|   |-- organic_solvent_removal.tcl
-|   |-- lipid_elongation.tcl
-|   |-- ring_piercing_solver.tcl
-|   |-- minimize_template.conf
-|   |-- toppar/
-|   `-- README.md
-`-- membrane_conversion_example/
-    |-- input/
-    |-- expected/
-    |-- scripts/
-    `-- README.md
+|-- README.md
+|-- LICENSE
+|-- workflows/
+|   |-- README.md
+|   |-- fl-to-hmmm/
+|   |   |-- README.md
+|   |   |-- fl-to-hmmm-script.tcl
+|   |   `-- toppar/
+|   `-- hmmm-to-fl/
+|       |-- README.md
+|       |-- hmmm-to-fl-script.tcl
+|       |-- organic_solvent_removal.tcl
+|       |-- lipid_elongation.tcl
+|       |-- ring_piercing_solver.tcl
+|       |-- minimize_template.conf
+|       `-- toppar/
+`-- examples/
+    |-- README.md
+    `-- membrane_conversion/
+        |-- README.md
+        |-- input/
+        |-- expected/
+        `-- scripts/
 ```
 
-## FL to HMMM
+## Workflows
 
-Place a full-length `.psf` and `.pdb` file in `fl-to-hmmm/`, then run:
+### FL to HMMM
+
+Use `workflows/fl-to-hmmm/` to convert a full-length membrane to HMMM.
 
 ```bash
-cd fl-to-hmmm
+cd workflows/fl-to-hmmm
 vmd -dispdev text -e fl-to-hmmm-script.tcl
 ```
 
 When prompted, provide your input PSF and PDB filenames. The output files are
-written with the `hmmm-` prefix:
+written with the `hmmm-` prefix.
 
-```text
-hmmm-<input>.psf
-hmmm-<input>.pdb
-```
+### HMMM to Full-Length
 
-## HMMM to Full-Length
-
-Place an HMMM `.psf` and `.pdb` file in `hmmm_to_fl/`, then run:
+Use `workflows/hmmm-to-fl/` to convert an HMMM membrane back to full-length.
 
 ```bash
-cd hmmm_to_fl
+cd workflows/hmmm-to-fl
 vmd -dispdev text -e hmmm-to-fl-script.tcl
 ```
 
-The workflow removes organic solvent, elongates lipid tails, and resolves ring
-piercing. The final output files are:
+The final full-length output files are:
 
 ```text
 PROT_FLMEMB.psf
@@ -107,43 +109,28 @@ PROT_FLMEMB.pdb
 
 ## Runnable Example
 
-The `membrane_conversion_example/` folder contains a compact, real molecular
-test case. It includes:
+The example in `examples/membrane_conversion/` includes compact real PSF/PDB
+inputs and automated checks:
 
-- Full-length sample input: `sample_full.psf` and `sample_full.pdb`.
-- HMMM sample input: `sample_hmmm.psf` and `sample_hmmm.pdb`.
-- Shell wrappers that copy the required scripts/topologies into a temporary
-  work directory.
-- A Python validator that checks atom counts and residue composition.
-
-Expected validation summaries:
-
-```text
-fl_to_hmmm: validation passed
-  PSF atoms: 24035
-  PDB atoms: 24035
-
-hmmm_to_fl: validation passed
-  PSF atoms: 27044
-  PDB atoms: 27044
+```bash
+bash examples/membrane_conversion/scripts/run_fl_to_hmmm.sh
+bash examples/membrane_conversion/scripts/run_hmmm_to_fl.sh
 ```
 
-The example runners copy topology files into `work/`; they do not rely on
-symlinks.
+The example scripts copy workflow files and topology files into
+`examples/membrane_conversion/work/`; they do not use symlinks. The `work/`
+directory is ignored by Git.
 
-## Notes
+## License
 
-- The included sample PDB for the full-length input is a single frame extracted
-  from a CHARMM-GUI/NAMD trajectory-style PDB to keep the repository small.
-- The scripts expect CHARMM-style PSF/PDB files and topology/parameter files
-  compatible with the provided `toppar/` folders.
-- For new systems with modified lipids or custom parameters, update the relevant
-  topology/parameter files and verify that `lipid_elongation.tcl` and
-  `minimize_template.conf` can read them.
+This project is distributed under the MIT License. See `LICENSE`.
 
-## Acknowledgments
+## Acknowledgment
 
-The HMMM-to-FL workflow uses a ring-piercing resolution step based on the VMD
-ring-piercing plugin workflow. See the plugin project for installation details:
+These scripts are adapted from the workflow and scripts described in Hasdemir et al. (2026), with modifications to support HMMM membrane to full-length conversion of PSM.
 
-https://github.com/dgozgulbas/RPplugin
+Reference: Hasdemir, H. S., Li, Y., Kelich, P., Wen, P.-C., & Tajkhorshid, E. (2026).
+Characterization of membrane binding and protein–lipid interactions at the atomic level
+with an accelerated HMMM model. In J. H. Kleinschmidt (Ed.), Lipid-Protein Interactions
+(Methods in Molecular Biology, Vol. 3001). Humana, New York, NY.
+https://doi.org/10.1007/978-1-0716-5054-7_1

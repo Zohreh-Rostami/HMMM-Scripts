@@ -1,7 +1,7 @@
 #######################################################################################
 #### This script resolves potential ring piercing in the system.                   ####
 #### The script was originally developed by Dr. Defne Gorgun Ozgulbas and Dr. Josh ####
-#### Vermass, modified by Yupeng Li.                                               ####
+#### Vermass, modified by Yupeng Li and Zohreh Rostmai.                            ####
 #### It has been integrated into Ring Piercing Solver plugin in VMD. More info     ####
 #### about its installation and usage can be found at the following github page:   ####
 #### https://github.com/dgozgulbas/RPplugin?tab=readme-ov-file                     ####

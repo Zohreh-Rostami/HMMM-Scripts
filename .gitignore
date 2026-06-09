@@ -1,5 +1,5 @@
 # Generated example outputs
-membrane_conversion_example/work/
+examples/membrane_conversion/work/
 
 # Logs and temporary output from VMD/NAMD runs
 *.log

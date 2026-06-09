@@ -3,7 +3,7 @@ set -euo pipefail
 
 SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 EXAMPLE_DIR=$(cd "$SCRIPT_DIR/.." && pwd)
-REPO_ROOT=$(cd "$EXAMPLE_DIR/.." && pwd)
+REPO_ROOT=$(cd "$EXAMPLE_DIR/../.." && pwd)
 WORKDIR="$EXAMPLE_DIR/work/fl-to-hmmm"
 VMD_BIN=${VMD_BIN:-vmd}
 
@@ -16,10 +16,10 @@ command -v "$VMD_BIN" >/dev/null 2>&1 || {
 rm -rf "$WORKDIR"
 mkdir -p "$WORKDIR"
 
-cp "$REPO_ROOT/fl-to-hmmm/fl-to-hmmm-script.tcl" "$WORKDIR/"
+cp "$REPO_ROOT/workflows/fl-to-hmmm/fl-to-hmmm-script.tcl" "$WORKDIR/"
 cp "$EXAMPLE_DIR/input/full_length/sample_full.psf" "$WORKDIR/"
 cp "$EXAMPLE_DIR/input/full_length/sample_full.pdb" "$WORKDIR/"
-cp -R -L "$REPO_ROOT/fl-to-hmmm/toppar" "$WORKDIR/toppar"
+cp -R -L "$REPO_ROOT/workflows/fl-to-hmmm/toppar" "$WORKDIR/toppar"
 
 (
   cd "$WORKDIR"

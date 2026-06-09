@@ -5,7 +5,7 @@
 #### 2.2 Further extend the tails to their FL forms by PSFGEN                      ####
 #### 3. Detect and resolve any ring piercing                                       ####
 #### The script was originally developed by Dr. Defne Gorgun Ozgulbas and modified ####
-#### by Yupeng Li, both from Dr. Emad Tajkhorshid's group                          ####
+#### by Yupeng Li and Zohreh Rostami, both from Dr. Emad Tajkhorshid's group       ####
 #######################################################################################
 
 echo "*************************************************"

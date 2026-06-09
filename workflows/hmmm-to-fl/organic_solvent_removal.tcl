@@ -1,7 +1,7 @@
 #######################################################################################
 #### This script removes the organic solvent molecules in the mebrane core.        ####
 #### The script was originally developed by Dr. Defne Gorgun Ozgulbas and modified ####
-#### by Yupeng Li, both from Dr. Emad Tajkhorshid's group.                         ####
+#### by Yupeng Li and Zohreh Rostami, both from Dr. Emad Tajkhorshid's group.      ####
 #######################################################################################
 
 #######################################################################################
