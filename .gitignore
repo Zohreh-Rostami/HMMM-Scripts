@@ -1,0 +1,22 @@
+# Generated example outputs
+membrane_conversion_example/work/
+
+# Logs and temporary output from VMD/NAMD runs
+*.log
+*.out
+*.dcd
+*.coor
+*.vel
+*.xsc
+*.xst
+*.restart.*
+*.colvars.*
+
+# OS/editor files
+.DS_Store
+*.swp
+*~
+
+# Python cache
+__pycache__/
+*.py[cod]

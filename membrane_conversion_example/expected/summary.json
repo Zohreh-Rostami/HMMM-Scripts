@@ -1,0 +1,51 @@
+{
+  "fl_to_hmmm": {
+    "psf_atoms": 24035,
+    "pdb_atoms": 24035,
+    "residue_atom_counts": {
+      "ALA": 50,
+      "CHL1": 3108,
+      "CLA": 12,
+      "GLN": 23,
+      "GLU": 15,
+      "LEU": 19,
+      "LYS": 88,
+      "POPC": 1540,
+      "POPE": 1342,
+      "POPS": 693,
+      "POT": 20,
+      "PRO": 14,
+      "PSM": 976,
+      "SCSE": 1562,
+      "SER": 17,
+      "TIP3": 14535,
+      "TYR": 21
+    },
+    "required_residues": ["SCSE"],
+    "absent_residues": []
+  },
+  "hmmm_to_fl": {
+    "psf_atoms": 27044,
+    "pdb_atoms": 27044,
+    "residue_atom_counts": {
+      "ALA": 50,
+      "CHL1": 3108,
+      "CLA": 12,
+      "GLN": 23,
+      "GLU": 15,
+      "LEU": 19,
+      "LYS": 88,
+      "POPC": 2948,
+      "POPE": 2750,
+      "POPS": 1397,
+      "POT": 20,
+      "PRO": 14,
+      "PSM": 2032,
+      "SER": 12,
+      "TIP3": 14535,
+      "TYR": 21
+    },
+    "required_residues": [],
+    "absent_residues": ["SCSE"]
+  }
+}
