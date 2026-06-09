@@ -9,6 +9,11 @@ The repository is organized around two things:
 - `workflows/`: the conversion scripts and topology files.
 - `examples/`: runnable sample systems.
 
+## Supported Lipids
+
+The scripts currently support standard palmitoyl-oleoyl lipids, CHL1
+(cholesterol), and PSM (palmitoyl sphingomyelin).
+
 ## Start Here
 
 Run the included membrane conversion example from the repository root:

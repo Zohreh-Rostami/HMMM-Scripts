@@ -2,6 +2,9 @@
 
 This folder contains the conversion scripts and topology files.
 
+The scripts currently support standard palmitoyl-oleoyl lipids, CHL1
+(cholesterol), and PSM (palmitoyl sphingomyelin).
+
 ## Contents
 
 ```text
