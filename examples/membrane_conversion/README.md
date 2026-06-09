@@ -8,7 +8,7 @@ It tests:
 1. Full-length membrane to HMMM conversion.
 2. HMMM membrane to full-length conversion.
 3. Creation of output PSF/PDB files that can be compared with tracked
-   reference outputs.
+   representative reference outputs.
 
 The full-length input PDB is a single frame extracted from a CHARMM-GUI/NAMD
 trajectory-style PDB. This keeps the example compact while still testing the
@@ -74,7 +74,7 @@ Generated outputs are written under:
 examples/membrane_conversion/work/fl-to-hmmm/
 ```
 
-Reference outputs are stored under:
+Representative reference outputs are stored under:
 
 ```text
 examples/membrane_conversion/expected_outputs/fl-to-hmmm/
@@ -101,7 +101,7 @@ Generated outputs are written under:
 examples/membrane_conversion/work/hmmm_to_fl/
 ```
 
-Reference outputs are stored under:
+Representative reference outputs are stored under:
 
 ```text
 examples/membrane_conversion/expected_outputs/hmmm-to-fl/
@@ -123,12 +123,18 @@ bash examples/membrane_conversion/scripts/run_all.sh
 The HMMM-to-FL step can take longer because it runs the NAMD minimization used
 by the ring-piercing solver.
 
-To compare against the reference outputs, use `diff -q` on the generated and
-reference PSF/PDB files. For example:
+The reference outputs are included so users can inspect the expected file names,
+atom counts, and structure format. Exact byte-for-byte PDB comparisons are not
+guaranteed across runs because solvent placement and minimization can produce
+different coordinates while preserving the same topology and atom count.
+
+For a quick atom-count check:
 
 ```bash
-diff -q examples/membrane_conversion/work/fl-to-hmmm/hmmm-sample_full.psf \
-  examples/membrane_conversion/expected_outputs/fl-to-hmmm/hmmm-sample_full.psf
+awk '/!NATOM/{print $1}' examples/membrane_conversion/work/fl-to-hmmm/hmmm-sample_full.psf
+awk 'BEGIN{n=0} /^(ATOM|HETATM)/{n++} END{print n}' examples/membrane_conversion/work/fl-to-hmmm/hmmm-sample_full.pdb
+awk '/!NATOM/{print $1}' examples/membrane_conversion/work/hmmm_to_fl/PROT_FLMEMB.psf
+awk 'BEGIN{n=0} /^(ATOM|HETATM)/{n++} END{print n}' examples/membrane_conversion/work/hmmm_to_fl/PROT_FLMEMB.pdb
 ```
 
 ## Manual Use

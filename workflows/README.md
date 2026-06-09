@@ -21,7 +21,7 @@ workflows/
 Use `fl-to-hmmm/` for full-length to HMMM conversion and `hmmm-to-fl/` for
 HMMM to full-length conversion.
 
-For a runnable test system, start with:
+For a runnable test system, run this from the repository root:
 
 ```bash
 bash examples/membrane_conversion/scripts/run_all.sh

@@ -107,15 +107,16 @@ PROT_FLMEMB.pdb
 ## Runnable Example
 
 The example in `examples/membrane_conversion/` includes compact real PSF/PDB
-inputs and reference outputs:
+inputs and representative reference outputs:
 
 ```bash
 bash examples/membrane_conversion/scripts/run_fl_to_hmmm.sh
 bash examples/membrane_conversion/scripts/run_hmmm_to_fl.sh
 ```
 
-Generated files are written to `examples/membrane_conversion/work/`. Reference
-PSF/PDB outputs are stored in `examples/membrane_conversion/expected_outputs/`.
+Generated files are written to `examples/membrane_conversion/work/`.
+Representative reference PSF/PDB outputs are stored in
+`examples/membrane_conversion/expected_outputs/`.
 
 ## Adding Custom Parameter Files
 

@@ -13,6 +13,7 @@ command -v "$VMD_BIN" >/dev/null 2>&1 || {
   echo "Set VMD_BIN=/path/to/vmd or add VMD to PATH." >&2
   exit 1
 }
+export VMD_BIN
 
 if [[ ! -x "$NAMD_BIN" ]] && ! command -v "$NAMD_BIN" >/dev/null 2>&1; then
   echo "Error: NAMD executable '$NAMD_BIN' was not found." >&2
@@ -33,10 +34,7 @@ cp -R -L "$REPO_ROOT/workflows/hmmm-to-fl/toppar" "$WORKDIR/toppar"
 (
   cd "$WORKDIR"
   printf "sample_hmmm.psf\nsample_hmmm.pdb\n" \
-    | "$VMD_BIN" -dispdev text -e organic_solvent_removal.tcl > organic_solvent_removal.log 2>&1
-
-  "$VMD_BIN" -dispdev text -e lipid_elongation.tcl > lipid_elongation.log 2>&1
-  "$VMD_BIN" -dispdev text -e ring_piercing_solver.tcl > ring_piercing_solver.log 2>&1
+    | "$VMD_BIN" -dispdev text -e hmmm-to-fl-script.tcl > hmmm-to-fl.log 2>&1
 )
 
 for output in "$WORKDIR/PROT_FLMEMB.psf" "$WORKDIR/PROT_FLMEMB.pdb"; do
@@ -49,4 +47,4 @@ done
 
 echo "HMMM-to-FL example finished."
 echo "Outputs: $WORKDIR/PROT_FLMEMB.psf and $WORKDIR/PROT_FLMEMB.pdb"
-echo "Logs: $WORKDIR/organic_solvent_removal.log, $WORKDIR/lipid_elongation.log, $WORKDIR/ring_piercing_solver.log"
+echo "Logs: $WORKDIR/hmmm-to-fl.log, $WORKDIR/organic_solvent_removal.log, $WORKDIR/lipid_elongation.log, $WORKDIR/ring_piercing_solver.log"
