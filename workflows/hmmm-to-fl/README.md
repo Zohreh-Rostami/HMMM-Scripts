@@ -27,9 +27,15 @@ toppar/
 ## Requirements
 
 - VMD.
-- NAMD available as `namd2`, or update the NAMD command in
-  `ring_piercing_solver.tcl`.
+- NAMD available as `namd`.
 - The VMD ring-piercing plugin required by the ring-piercing step.
+
+If your NAMD executable is not named `namd`, set `NAMD_BIN` before running the
+workflow or example:
+
+```bash
+NAMD_BIN=/path/to/namd3 vmd -dispdev text -e hmmm-to-fl-script.tcl
+```
 
 ## Run
 
@@ -50,6 +56,27 @@ PROT_FLMEMB.pdb
 
 Intermediate folders such as `hmmm2fl_building/` and
 `hmmm2fl_ringpiercing/` may be created during the run.
+
+## Adding New Topology or Parameter Files
+
+Put any additional HMMM-to-FL topology, parameter, or stream files in:
+
+```text
+workflows/hmmm-to-fl/toppar/
+```
+
+Then check these two workflow files:
+
+- `lipid_elongation.tcl`: this script scans `../toppar/*` while running from `hmmm2fl_building/` and loads topology files needed to rebuild lipid tails.
+- `minimize_template.conf`: add any new parameter or stream files required by NAMD for the ring-piercing minimization step.
+
+If the added files are also needed by the FL-to-HMMM workflow, copy them to:
+
+```text
+workflows/fl-to-hmmm/toppar/
+```
+
+and load them in `workflows/fl-to-hmmm/fl-to-hmmm-script.tcl`.
 
 ## Test Example
 

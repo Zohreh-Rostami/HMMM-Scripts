@@ -9,7 +9,6 @@ workflows.
 examples/
 `-- membrane_conversion/
     |-- input/
-    |-- expected/
     |-- scripts/
     `-- README.md
 ```
@@ -19,9 +18,6 @@ Run the full example from the repository root:
 ```bash
 bash examples/membrane_conversion/scripts/run_all.sh
 ```
-
-The example creates temporary output under `examples/membrane_conversion/work/`.
-That folder is ignored by Git.
 
 ## Acknowledgment
 

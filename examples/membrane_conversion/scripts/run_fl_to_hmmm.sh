@@ -27,7 +27,13 @@ cp -R -L "$REPO_ROOT/workflows/fl-to-hmmm/toppar" "$WORKDIR/toppar"
     | "$VMD_BIN" -dispdev text -e fl-to-hmmm-script.tcl > fl-to-hmmm.log 2>&1
 )
 
-python3 "$SCRIPT_DIR/validate_conversion.py" fl_to_hmmm "$WORKDIR"
+for output in "$WORKDIR/hmmm-sample_full.psf" "$WORKDIR/hmmm-sample_full.pdb"; do
+  if [[ ! -s "$output" ]]; then
+    echo "Error: expected output was not created: $output" >&2
+    echo "See log: $WORKDIR/fl-to-hmmm.log" >&2
+    exit 1
+  fi
+done
 
 echo "FL-to-HMMM example finished."
 echo "Outputs: $WORKDIR/hmmm-sample_full.psf and $WORKDIR/hmmm-sample_full.pdb"

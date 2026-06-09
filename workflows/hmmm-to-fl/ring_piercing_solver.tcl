@@ -198,6 +198,10 @@ close $strfp
 exec cp ./minimize_template.conf hmmm2fl_ringpiercing/minimize.conf
 
 # Resolve ring piercing
-resolve_piercing namd2 "+p16" 2.2
+set namdbin namd
+if {[info exists env(NAMD_BIN)] && $env(NAMD_BIN) ne ""} {
+  set namdbin $env(NAMD_BIN)
+}
+resolve_piercing $namdbin "+p16" 2.2
 
 quit; #Quit VMD
