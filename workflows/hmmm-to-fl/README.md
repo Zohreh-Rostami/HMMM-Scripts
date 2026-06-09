@@ -27,14 +27,16 @@ toppar/
 ## Requirements
 
 - VMD.
-- NAMD available as `namd`.
-- The VMD ring-piercing plugin required by the ring-piercing step.
+- NAMD available as `namd`, or set `NAMD_BIN` to the executable on your
+  system.
+- The VMD ring-piercing plugin required by the ring-piercing step. Install it
+  from https://github.com/dgozgulbas/RPplugin?tab=readme-ov-file.
 
 If your NAMD executable is not named `namd`, set `NAMD_BIN` before running the
 workflow or example:
 
 ```bash
-NAMD_BIN=/path/to/namd3 vmd -dispdev text -e hmmm-to-fl-script.tcl
+NAMD_BIN=/path/to/namd vmd -dispdev text -e hmmm-to-fl-script.tcl
 ```
 
 ## Run

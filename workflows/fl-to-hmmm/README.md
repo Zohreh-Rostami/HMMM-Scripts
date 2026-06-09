@@ -44,6 +44,26 @@ hmmm-sample_full.psf
 hmmm-sample_full.pdb
 ```
 
+## Adding New Topology or Parameter Files
+
+Put any additional FL-to-HMMM topology, parameter, or stream files in:
+
+```text
+workflows/fl-to-hmmm/toppar/
+```
+
+Then load the needed topology files in
+`workflows/fl-to-hmmm/fl-to-hmmm-script.tcl`.
+
+If the added files are also needed by the HMMM-to-FL workflow, copy them to:
+
+```text
+workflows/hmmm-to-fl/toppar/
+```
+
+and include them in `workflows/hmmm-to-fl/lipid_elongation.tcl` or
+`workflows/hmmm-to-fl/minimize_template.conf` as needed.
+
 ## Test Example
 
 To run a prepared sample from the repository root:

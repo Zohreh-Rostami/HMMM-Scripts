@@ -34,9 +34,11 @@ examples/membrane_conversion/
 ## Requirements
 
 - VMD available as `vmd`.
-- For HMMM-to-FL only: NAMD available as `namd`.
+- For HMMM-to-FL only: NAMD available as `namd`, or set `NAMD_BIN` to the
+  executable on your system.
 - For HMMM-to-FL only: the VMD ring-piercing plugin required by
-  `ring_piercing_solver.tcl`.
+  `ring_piercing_solver.tcl`. Install it from
+  https://github.com/dgozgulbas/RPplugin?tab=readme-ov-file.
 
 If VMD is installed under a different command/path, set `VMD_BIN`:
 
@@ -47,8 +49,7 @@ VMD_BIN=/path/to/vmd bash examples/membrane_conversion/scripts/run_fl_to_hmmm.sh
 If your NAMD executable is not named `namd`, set `NAMD_BIN`. For example:
 
 ```bash
-NAMD_BIN=/Projects/dhardy/namd_builds/NAMD_3.1alpha3_Linux-x86_64-netlrts-smp-CUDA/namd3 \
-  bash examples/membrane_conversion/scripts/run_hmmm_to_fl.sh
+NAMD_BIN=/path/to/namd bash examples/membrane_conversion/scripts/run_hmmm_to_fl.sh
 ```
 
 ## Run FL to HMMM
