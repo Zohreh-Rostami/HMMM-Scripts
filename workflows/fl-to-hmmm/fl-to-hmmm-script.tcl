@@ -1,6 +1,3 @@
-# Modified by Zohreh Rostami on Sep 23, 2025
-
-
 package require psfgen
 
 set parampath toppar 
