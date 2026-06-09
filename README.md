@@ -143,7 +143,4 @@ symlinks.
 
 ## Acknowledgments
 
-The HMMM-to-FL workflow uses a ring-piercing resolution step based on the VMD
-ring-piercing plugin workflow. See the plugin project for installation details:
 
-https://github.com/dgozgulbas/RPplugin
