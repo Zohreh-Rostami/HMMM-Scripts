@@ -2,7 +2,7 @@
 
 VMD/Tcl workflows for converting membrane systems between full-length (FL)
 lipid representations and Highly Mobile Membrane-Mimetic (HMMM)
-representations.
+representations. The scripts currently support standard palmitoyl-oleoyl lipids, CHL1 (cholesterol), and PSM (palmitoyl sphingomyelin).
 
 The repository is organized around two things:
 
