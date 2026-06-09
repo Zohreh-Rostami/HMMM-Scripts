@@ -21,7 +21,8 @@ This runs:
 
 1. Full-length to HMMM conversion.
 2. HMMM to full-length conversion.
-3. Creation of the expected output PSF/PDB files.
+3. Creation of output PSF/PDB files that can be compared with the tracked
+   reference outputs.
 
 ## Requirements
 
@@ -68,6 +69,7 @@ NAMD_BIN=/path/to/namd bash examples/membrane_conversion/scripts/run_hmmm_to_fl.
     |-- README.md
     `-- membrane_conversion/
         |-- README.md
+        |-- expected_outputs/
         |-- input/
         `-- scripts/
 ```
@@ -105,12 +107,15 @@ PROT_FLMEMB.pdb
 ## Runnable Example
 
 The example in `examples/membrane_conversion/` includes compact real PSF/PDB
-inputs:
+inputs and reference outputs:
 
 ```bash
 bash examples/membrane_conversion/scripts/run_fl_to_hmmm.sh
 bash examples/membrane_conversion/scripts/run_hmmm_to_fl.sh
 ```
+
+Generated files are written to `examples/membrane_conversion/work/`. Reference
+PSF/PDB outputs are stored in `examples/membrane_conversion/expected_outputs/`.
 
 ## Adding Custom Parameter Files
 

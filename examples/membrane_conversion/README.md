@@ -7,7 +7,8 @@ It tests:
 
 1. Full-length membrane to HMMM conversion.
 2. HMMM membrane to full-length conversion.
-3. Creation of expected output PSF/PDB files.
+3. Creation of output PSF/PDB files that can be compared with tracked
+   reference outputs.
 
 The full-length input PDB is a single frame extracted from a CHARMM-GUI/NAMD
 trajectory-style PDB. This keeps the example compact while still testing the
@@ -17,6 +18,13 @@ real conversion scripts.
 
 ```text
 examples/membrane_conversion/
+|-- expected_outputs/
+|   |-- fl-to-hmmm/
+|   |   |-- hmmm-sample_full.psf
+|   |   `-- hmmm-sample_full.pdb
+|   `-- hmmm-to-fl/
+|       |-- PROT_FLMEMB.psf
+|       `-- PROT_FLMEMB.pdb
 |-- input/
 |   |-- full_length/
 |   |   |-- sample_full.psf
@@ -60,13 +68,19 @@ From the repository root:
 bash examples/membrane_conversion/scripts/run_fl_to_hmmm.sh
 ```
 
-Expected outputs are written under:
+Generated outputs are written under:
 
 ```text
 examples/membrane_conversion/work/fl-to-hmmm/
 ```
 
-Expected outputs:
+Reference outputs are stored under:
+
+```text
+examples/membrane_conversion/expected_outputs/fl-to-hmmm/
+```
+
+Files:
 
 ```text
 hmmm-sample_full.psf
@@ -81,13 +95,19 @@ From the repository root:
 bash examples/membrane_conversion/scripts/run_hmmm_to_fl.sh
 ```
 
-Expected outputs are written under:
+Generated outputs are written under:
 
 ```text
 examples/membrane_conversion/work/hmmm_to_fl/
 ```
 
-Expected outputs:
+Reference outputs are stored under:
+
+```text
+examples/membrane_conversion/expected_outputs/hmmm-to-fl/
+```
+
+Files:
 
 ```text
 PROT_FLMEMB.psf
@@ -102,6 +122,14 @@ bash examples/membrane_conversion/scripts/run_all.sh
 
 The HMMM-to-FL step can take longer because it runs the NAMD minimization used
 by the ring-piercing solver.
+
+To compare against the reference outputs, use `diff -q` on the generated and
+reference PSF/PDB files. For example:
+
+```bash
+diff -q examples/membrane_conversion/work/fl-to-hmmm/hmmm-sample_full.psf \
+  examples/membrane_conversion/expected_outputs/fl-to-hmmm/hmmm-sample_full.psf
+```
 
 ## Manual Use
 

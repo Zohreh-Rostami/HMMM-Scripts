@@ -1,0 +1,3 @@
+# VMD/NAMD structure files are fixed-column text and may preserve trailing spaces.
+*.pdb -whitespace
+*.psf -whitespace

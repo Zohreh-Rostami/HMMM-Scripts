@@ -8,6 +8,7 @@ workflows.
 ```text
 examples/
 `-- membrane_conversion/
+    |-- expected_outputs/
     |-- input/
     |-- scripts/
     `-- README.md
